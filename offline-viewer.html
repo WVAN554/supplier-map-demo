@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; font-src 'none'; frame-src 'none'; object-src 'none'; form-action 'none'; base-uri 'none'">
+<title>供應商情報 V5｜互動知識圖譜</title>
+<style>
+:root{--bg:#060c17;--slate:#0c1729;--panel:#0f1d31;--panel2:#15273e;--border:#293e55;--white:#f3f8ff;--txt:#dce8f7;--muted:#92a9c5;--aqua:#5addcf;--blue:#70b6ff;--purple:#b49bff;--orange:#ffbb75;--rose:#ff829f;--lime:#aadf88;--gold:#efcf82}
+*{box-sizing:border-box}body,html{height:100%;margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,'Noto Sans TC','Microsoft JhengHei',sans-serif;overflow:hidden}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--aqua);outline-offset:2px}
+a{color:#92caff}b,strong{color:var(--white)}.muted{color:var(--muted)}.tiny{font-size:11px}.nowrap{white-space:nowrap}
+#app{display:grid;grid-template-columns:276px minmax(0,1fr) 338px;grid-template-rows:66px minmax(0,1fr);height:100vh}
+header{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 22px;background:#091427;border-bottom:1px solid var(--border);min-width:0}header .brand{display:flex;gap:11px;align-items:center;min-width:0}.emblem{display:grid;place-items:center;background:#303069;border:1px solid #8d82d0;color:#fff;border-radius:10px;width:40px;height:40px;font-size:23px;font-weight:800}.brandtxt b{display:block;font-size:15px}.brandtxt span{display:block;font-size:10px;letter-spacing:1.3px;color:#8faacb;margin-top:3px}.counts{display:flex;gap:10px;flex-wrap:wrap}.counts span{font-size:11px;background:#11253b;border:1px solid #314761;border-radius:50px;padding:7px 10px}.headActions{display:flex;gap:7px}.btn{border:1px solid #3c5977;background:#182e49;color:#dfedff;border-radius:8px;padding:9px 10px;font-size:12px}.btn.accent{background:#86dccf;color:#0a2d39;font-weight:800;border-color:transparent}
+.sidebar{background:#0e1b2d;border-right:1px solid var(--border);padding:17px 14px 24px;overflow:auto}.sideTitle{font-size:10px;letter-spacing:1.35px;color:#8da7c5;margin:19px 0 9px;font-weight:800}.sideTitle:first-child{margin-top:4px}.search{width:100%;background:#081323;color:#fff;border:1px solid #35516d;border-radius:9px;padding:11px;font-size:13px}.results{max-height:150px;overflow:auto}.suggest{display:block;width:100%;border:0;background:#142a41;color:#dceeff;border-bottom:1px solid #263f54;text-align:left;font-size:12px;padding:9px 10px}.suggest:hover{background:#23465b}.modes{display:grid;grid-template-columns:1fr 1fr;gap:7px}.mode{border:1px solid #375471;border-radius:9px;padding:10px 7px;background:#172a44;color:#bfcee3;font-size:11px}.mode.active{background:#443d71;border-color:#b49bff;color:white;font-weight:800}.sel{width:100%;padding:10px;background:#0b1b2e;border:1px solid #395574;border-radius:8px;color:#e6f2ff;font-size:12px}.provinceList{display:grid;grid-template-columns:1fr 1fr;gap:5px;max-height:260px;overflow-y:auto;padding-right:3px}.prov{border:1px solid #35516b;background:#142a41;color:#cbdef6;border-radius:7px;padding:9px 6px;text-align:left;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.prov.active{border-color:#5addcf;background:#184b54;color:#fff}.prov small{display:block;font-size:9px;color:#9db8ca;margin-top:2px}.check{display:flex;gap:8px;align-items:center;color:#c1d3e6;font-size:12px;padding:7px 3px}.check input{accent-color:#a690fd}.legend{display:grid;grid-template-columns:1fr 1fr;gap:7px;color:#afc6d8;font-size:11px}.legenditem{display:flex;align-items:center;gap:8px}.dot{width:10px;height:10px;border-radius:50%;background:var(--aqua)}.legend i{width:10px;height:10px;border-radius:50%;display:block}.sourceWarning{padding:10px;color:#f6cf9e;border:1px solid #685035;background:#292216;border-radius:8px;line-height:1.75;font-size:11px;margin-top:18px}
+.graph{position:relative;min-width:0;overflow:hidden;background:radial-gradient(ellipse 80% 72% at 53% 53%,#1a2444 0%,#111b31 43%,#070f1d 90%)}.graph:before{position:absolute;content:'';inset:0;background-image:radial-gradient(#b2d4f61b .7px,transparent 1.5px);background-size:25px 25px;pointer-events:none}.graph canvas{width:100%;height:100%;position:absolute;inset:0;touch-action:none;cursor:grab}.graph canvas.dragging{cursor:grabbing}.graphTitle{position:absolute;left:20px;top:20px;pointer-events:none;max-width:calc(100% - 30px)}.graphTitle small{font-size:10px;color:#91dfe6;letter-spacing:1.6px}.graphTitle h1{margin:8px 0 6px;font-size:24px;line-height:1.25}.graphTitle p{margin:0;color:#9eafc9;font-size:11px;line-height:1.65}.bottomTools{position:absolute;bottom:16px;left:18px;display:flex;align-items:center;gap:5px}.bottomTools button{border:1px solid #465c7c;background:#15243d;color:#e6f2ff;border-radius:7px;font-size:11px;padding:9px 10px}.zoomStat{font-size:11px;color:#cbdaf2;padding:8px;background:#101e36aa;border-radius:6px;min-width:45px;text-align:center}.tip{position:absolute;display:none;pointer-events:none;max-width:260px;padding:10px 12px;background:#121e33e8;border:1px solid #7895a7;border-radius:10px;font-size:12px;box-shadow:0 12px 36px #0007;z-index:5}.tip small{display:block;color:#91b3d4;margin-top:4px}.graphhint{position:absolute;right:18px;bottom:18px;color:#7f94b4;font-size:10px;text-align:right;line-height:1.8;pointer-events:none}.emptyScreen{position:absolute;inset:21% 9%;z-index:4;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:12px;background:#101e34e9;border:1px solid #4c607e;border-radius:18px;padding:30px}.emptyScreen h2{margin:0}.emptyScreen p{font-size:13px;color:#b6c9e4;max-width:510px;line-height:1.8}.emptyScreen input{max-width:100%}
+.inspector{background:var(--panel);border-left:1px solid var(--border);overflow-y:auto;padding:18px}.inspectTop{font-size:10px;letter-spacing:1.3px;color:#93a9c4;font-weight:800}.inspectName{font-size:23px;line-height:1.35;color:white;margin:19px 0 9px;overflow-wrap:anywhere}.inspectDesc{font-size:12px;color:#a9c0d5;line-height:1.75}.pill{font-size:10px;background:#26354c;border:1px solid #465d75;border-radius:20px;padding:4px 8px;color:#bfcee8;display:inline-block;margin-right:5px;margin-bottom:7px}.inBtns{display:flex;gap:8px;margin:12px 0}.inBtns button{flex:1}.field{border-bottom:1px solid #23394e;font-size:12px;padding:10px 0;line-height:1.7;overflow-wrap:anywhere}.field small{color:#88a6c3;font-size:11px;display:block}.insSub{font-size:11px;letter-spacing:1px;font-weight:800;color:#b8c8e0;margin:19px 0 8px}.neighbor{background:#14273d;border:1px solid #31506a;padding:9px 10px;margin:6px 0;border-radius:8px;cursor:pointer;font-size:12px}.neighbor:hover{background:#1f3b54}.neighbor small{display:block;color:#9ab3cb;line-height:1.5;margin-top:4px}.source{overflow-wrap:anywhere;font-size:11px;line-height:1.8;color:#a9c5d8;border-bottom:1px dashed #37516a;padding:8px 0}
+.modal{display:none;position:fixed;z-index:15;inset:0;background:#050b18dd;align-items:center;justify-content:center;padding:18px}.modal.open{display:flex}.paper{width:min(1100px,100%);max-height:96vh;overflow:auto;background:#f5f8fc;color:#1c3046;border-radius:13px;box-shadow:0 24px 80px #0009}.paperHead{position:sticky;top:0;background:#1c2c49;color:white;padding:12px 20px;display:flex;justify-content:space-between;gap:10px;align-items:center;z-index:2}.paperHead .actions{display:flex;gap:8px;flex-wrap:wrap}.paperHead button{border:1px solid #667998;background:#273958;color:white;padding:8px 10px;border-radius:7px;font-size:12px}.paperHead strong{font-size:13px}.paperBody{padding:32px 40px}.paperBody h1{font-size:29px;line-height:1.2;margin:8px 0}.paperBody h2{color:#24415b;margin:30px 0 12px;font-size:16px;border-top:1px solid #d6e0e9;padding-top:14px}.paperBody .sectionInfo{line-height:1.85;color:#354f63;font-size:13px}.paperBody table{width:100%;border-collapse:collapse;font-size:12px}.paperBody td,.paperBody th{padding:9px;text-align:left;border-bottom:1px solid #d5e1ed;vertical-align:top;overflow-wrap:anywhere}.paperBody th{background:#ecf2f8}.paperBody .dataCard{border:1px solid #d7e0ea;border-radius:9px;padding:11px;background:white;margin:7px 0;line-height:1.7;font-size:12px}.paperBody a{color:#1c64a5;overflow-wrap:anywhere}.paperBody .pending{color:#9e5424}.paperBody .xmeta{font-size:12px;color:#677f96}.privacy{background:#fff5e6;border:1px solid #d9c19e;color:#815f3a;border-radius:10px;padding:11px 14px;font-size:12px;line-height:1.8;margin-top:15px}
+@media(max-width:1100px){#app{grid-template-columns:230px minmax(0,1fr) 277px}.brandtxt span{display:none}.inspector{padding:12px}.sidebar{padding:12px}}@media(max-width:760px){#app{display:flex;flex-direction:column;height:100dvh}header{height:60px;padding:9px 11px;flex-shrink:0}.counts{display:none}.brandtxt b{font-size:13px}.emblem{width:32px;height:32px;font-size:18px}.sidebar{position:absolute;top:60px;left:0;bottom:0;z-index:11;width:min(300px,86vw);box-shadow:10px 0 30px #0008;transform:translateX(-105%);transition:transform .2s}.sidebar.open{transform:none}.graph{flex:1;min-height:0}.inspector{height:190px;border-left:0;border-top:1px solid #355272;flex-shrink:0}.inspector .inspectName{font-size:17px;margin:6px 0}.inspector .neighbors{display:none}.graphTitle h1{font-size:19px}.graphTitle{top:12px;left:12px}.graphhint{display:none}.bottomTools{bottom:10px;left:10px}.paper{height:100%;max-height:100vh;border-radius:0}.modal{padding:0}.paperBody{padding:20px 15px}.paperBody h1{font-size:24px}.paperHead strong{display:none}}
+@media print{html,body{height:auto;overflow:visible;background:white}.modal{display:block!important;position:static;background:white;padding:0}.paper{width:100%;max-height:none;overflow:visible;box-shadow:none;border-radius:0}.paperHead{display:none}.paperBody{padding:0}#app{display:none!important}.paperBody h2{break-after:avoid}.dataCard{break-inside:avoid}}
+
+.forcePanel{padding:11px 9px 13px;border:1px solid #34566f;border-radius:10px;background:#13253e;display:grid;gap:11px}.forcePanel label{font-size:11px;color:#c4daed;display:grid;grid-template-columns:1fr auto;gap:5px}.forcePanel input{grid-column:1/-1;width:100%;accent-color:#5addcf}.forcePanel output{color:#86e9da;font-variant-numeric:tabular-nums}.forceActions{display:flex;gap:5px}.forceActions button{flex:1;min-width:0;padding:8px 4px}.influenceList{max-height:220px;overflow:auto;border:1px solid #35516b;border-radius:9px}.influenceList .suggest{display:flex;justify-content:space-between;gap:7px}.importanceBox{margin:10px 0;padding:11px;background:#192b47;border:1px solid #466683;border-radius:9px}.importanceBox .metric{display:flex;justify-content:space-between;font-size:12px;margin-bottom:7px}.importanceBox .metric b{color:#aaf2e4}.importanceBox input{width:100%;accent-color:#5addcf}.importanceBox .small{color:#9cbbd4;font-size:11px;line-height:1.7}.graphTitle{max-width:min(560px,calc(100% - 35px))}.graphTitle p{background:#0c193299;display:inline-block;padding:4px 7px;border-radius:6px}.bottomTools{max-width:90%;overflow:auto}.bottomTools button{white-space:nowrap}.graph canvas{cursor:grab;touch-action:none}
+</style>
+</head>
+<body>
+<div id="app">
+<header><div class="brand"><div class="emblem">KG</div><div class="brandtxt"><b>供應商情報 · 知識圖譜 V5</b><span>FORCE-DIRECTED / COMMUNITY CLUSTERS / WEIGHTED NODES</span></div></div><div class="counts"><span><strong id="metaNode">—</strong> 節點</span><span><strong id="metaEdge">—</strong> 關係</span><span><strong id="metaVendor">—</strong> 公司／來源名錄</span></div><div class="headActions"><button class="btn" id="navOpen" style="display:none">篩選 ☰</button><button class="btn" id="savePNG">匯出圖像</button><button class="btn accent" id="openDossier">廠商情報頁</button></div></header>
+<aside class="sidebar" id="sidebar"><div class="sideTitle">01 / 搜尋節點</div><input class="search" id="search" placeholder="廠商、人物、地區、設備…"><div id="searchResults" class="results"></div>
+<div class="sideTitle">02 / 知識圖譜視角</div><div class="modes"><button class="mode" data-mode="overview">全國全景</button><button class="mode active" data-mode="province">省份網絡</button><button class="mode" data-mode="people">人物網絡</button><button class="mode" data-mode="equipment">設備／產品</button><button class="mode" data-mode="focus">聚焦關係</button><button class="mode" data-mode="all">全部節點</button></div>
+<div class="sideTitle">03 / 按省份展開</div><select class="sel" id="provinceSelect"></select><div id="provinceList" class="provinceList"></div>
+<div class="sideTitle">04 / 關係線與範圍</div><label class="check"><input id="showContours" type="checkbox" checked>顯示社群聚集範圍（演算分群）</label><label class="check"><input id="showPending" type="checkbox" checked>顯示待核／名稱地點線索</label><label class="check"><input id="showPeople" type="checkbox" checked>顯示關聯人物</label><label class="check"><input id="showEquipment" type="checkbox" checked>顯示設備與歷史價格</label><div class="sideTitle">焦點展開深度</div><div class="modes"><button class="mode" data-depth="1">1 層</button><button class="mode active" data-depth="2">2 層</button></div>
+<div class="sideTitle">05 / Force physics + weighted influence</div>
+<div class="forcePanel">
+<label>連結吸引 <output id="linkValue">1.0</output><input id="linkSlider" type="range" min="0.2" max="2.6" step="0.1" value="1"></label>
+<label>排斥與防疊疊 <output id="repelValue">1.0</output><input id="repelSlider" type="range" min="0.3" max="2.8" step="0.1" value="1"></label>
+<label>社群聚集 <output id="clusterValue">1.0</output><input id="clusterSlider" type="range" min="0" max="3" step="0.1" value="1"></label>
+<label>節點大小 <output id="sizeValue">1.0</output><input id="sizeSlider" type="range" min="0.6" max="1.8" step="0.1" value="1"></label>
+<div class="forceActions"><button id="pausePhysics" class="btn">暫停物理</button><button id="reflow" class="btn">重新聚集</button></div>
+<div class="forceActions"><button id="downloadWeights" class="btn">匯出權重設定</button><label for="loadWeights" class="btn" style="text-align:center;cursor:pointer;flex:1">匯入權重</label><input id="loadWeights" type="file" accept=".json,application/json" style="display:none"></div><div class="tiny muted">線段種類與證據會影響節點間的吸引力。相關資料越多，自然聚集越明顯。</div>
+</div>
+<div class="sideTitle">重點節點 / 點擊立即轉向中心</div><div class="influenceList" id="importantNodes"></div>
+<div class="sideTitle">05 / 節點顏色</div><div class="legend"><span class="legenditem"><i style="background:#5addcf"></i>省市地區</span><span class="legenditem"><i style="background:#ffbb75"></i>廠區據點</span><span class="legenditem"><i style="background:#b49bff"></i>機械／設備商</span><span class="legenditem"><i style="background:#9edc93"></i>成品廠</span><span class="legenditem"><i style="background:#efcf82"></i>原物料</span><span class="legenditem"><i style="background:#ff829f"></i>人物</span><span class="legenditem"><i style="background:#83a4ef"></i>設備／技術</span><span class="legenditem"><i style="background:#c9d2e7"></i>其他</span></div><div class="sourceWarning"><b>實線</b>：有來源的明確關係。<b>虛線</b>：歷史、名稱相似、地名推測或尚未證實的關係。<br>名稱節點 ≠ 已核法人，廠區計畫 ≠ 已投產工廠。</div>
+<div class="sideTitle">06 / 私有資料載入</div><div class="tiny muted" id="importCaption">本機版已內嵌私有 V4 資料。</div><input type="file" id="filePicker" accept=".json,application/json" style="max-width:100%;margin-top:9px"><div class="tiny muted" style="margin-top:6px">僅本機讀取，程式沒有網路連線。</div>
+</aside>
+<main class="graph" id="graph"><canvas id="network"></canvas><div class="graphTitle"><small id="modeLabel">PROVINCE INTELLIGENCE NETWORK</small><h1 id="mainTitle">浙江省｜廠商、廠區、人物網</h1><p id="mainSub">點選節點檢視來源；雙擊節點可展開關係。</p></div><div class="bottomTools"><button id="fit">置中</button><button id="zoomOut">－</button><span id="zoomText" class="zoomStat">100%</span><button id="zoomIn">＋</button><button id="rotateLeft" title="左旋轉">↺</button><span id="rotText" class="zoomStat">0°</span><button id="rotateRight" title="右旋轉">↻</button><button id="resetRotation" title="回正方向">0°</button><button id="backProvince">返回省份</button></div><div class="graphhint">滑鼠滾輪縮放 · 拖曳畫布或節點<br>拖曳畫布／節點，Alt+拖曳旋轉；雙擊切換中心</div><div class="tip" id="tip"></div><div id="emptyScreen" class="emptyScreen" style="display:none"><h2>離線資料檢視器</h2><p>請先下載這個 HTML，在你的電腦以瀏覽器開啟，再選擇 V4 知識圖譜 JSON。公開 GitHub 不包含真實公司或人物資料。</p><label class="btn accent" for="filePicker">從左側選擇本機 JSON</label><div class="tiny muted" id="fileHint"></div></div></main>
+<aside class="inspector" id="inspector"><div class="inspectTop">SELECTED KNOWLEDGE NODE</div><div id="inspectorContent" class="inspectDesc">選取一個節點查看它的實際關係。</div></aside>
+</div>
+<div class="modal" id="modal"><article class="paper" id="paper"><div class="paperHead"><strong>供應商情報｜獨立資料頁</strong><div class="actions"><button id="exportDossier">匯出獨立 HTML</button><button id="printDossier">列印／存 PDF</button><button id="closeDossier">關閉 ×</button></div></div><div class="paperBody" id="dossierContent"></div></article></div>
+<script id="embedded-data" type="application/json">{}</script>
+<script>
+(function(){'use strict';
+var D=null,N=[],E=[],by=new Map(),adj=new Map(),sources={},province='浙江省';
+var state={mode:'province',selected:'GEO:中國:浙江省',focus:null,depth:2,pending:true,people:true,equipment:true,nodes:[],edges:[],positions:new Map(),hover:null,scale:1,panX:0,panY:0,drag:null,rotation:0,showContours:true};
+var kindColor={country:'#6bd3dd',province:'#5addcf',city:'#54baee',district:'#629fba',site:'#ffbb75',research_site:'#e6a76f',company:'#b49bff',research:'#e0be88',person:'#ff829f',equipment:'#83a4ef',product:'#91bfe2',price:'#f49b7e'};
+var $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,k=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[k]));
+var pretty={country:'國家',province:'省份／直轄市',city:'城市',district:'區縣',site:'工廠／據點',research_site:'公開據點線索',company:'公司／集團',research:'簡報來源名稱',person:'人物',equipment:'設備與產線',product:'產品技術',price:'歷史價格'};
+function color(n){if(!n)return '#c9d2e7';if(n.kind==='company')return String(n.category).includes('成品')?'#9edc93':String(n.category).includes('機械')?'#b49bff':'#c7c2ec';if(n.kind==='research')return n.category==='成品'?'#9edc93':n.category==='原物料'?'#efcf82':n.category==='主要生產設備'?'#b49bff':'#83a4ef';return kindColor[n.kind]||'#c9d2e7'}
+function load(data){if(!data||!Array.isArray(data.nodes)||!Array.isArray(data.edges))throw Error('需提供含 nodes、edges 的 V4 知識圖譜 JSON');D=data;N=data.nodes;E=data.edges;by=new Map(N.map(n=>[n.id,n]));adj=new Map(N.map(n=>[n.id,[]]));for(const e of E){if(!by.has(e.a)||!by.has(e.b))continue;adj.get(e.a).push(e);adj.get(e.b).push(e)}initNodeMetrics();sources=Object.fromEntries((D.sources||[]).map(s=>[s.id,s]));$('metaNode').textContent=N.length;$('metaEdge').textContent=E.length;$('metaVendor').textContent=N.filter(n=>n.kind==='company'||n.kind==='research').length;const sel=$('provinceSelect');let prov=N.filter(n=>n.kind==='province'&&n.country==='中國').map(n=>n.name);prov=Array.from(new Set(prov)).sort((a,b)=>a.localeCompare(b,'zh-Hant'));if(!prov.includes(province))province=prov[0]||'浙江省';sel.innerHTML=prov.map(p=>'<option value="'+esc(p)+'">'+esc(p)+'</option>').join('')+ '<option value="__unknown">未定位（來源名稱）</option>';sel.value=province;makeProvinceList();state.selected='GEO:中國:'+province;state.mode='province';state.focus=null;refreshModes();render();$('emptyScreen').style.display='none';$('importCaption').textContent='已載入 '+N.length+' 個知識節點，所有內容只在本機瀏覽器處理。';}
+function allow(e){return state.pending||e.level!=='pending'}
+function kindAllowed(n){if(!n)return false;if(!state.people&&n.kind==='person')return false;if(!state.equipment&&['equipment','price','product'].includes(n.kind))return false;return true}
+function other(e,id){return e.a===id?e.b:e.a}
+function connected(root,depth,initial){let done=new Set(initial||[root]),frontier=initial?Array.from(initial):[root];for(let i=0;i<depth;i++){let next=[];for(const id of frontier){for(const e of adj.get(id)||[]){if(!allow(e))continue;let tgt=other(e,id),n=by.get(tgt);if(!n||!kindAllowed(n)||done.has(tgt))continue;done.add(tgt);next.push(tgt)}}frontier=next}return done}
+function provinceView(){
+ if(province==='__unknown')return new Set(N.filter(n=>n.kind==='research'&&!n.province).map(n=>n.id));
+ let root='GEO:中國:'+province,group=new Set([root]),geo=new Set([root]);
+ // Traverse only geographic hierarchy; no arbitrary cross-province jumps
+ for(let k=0;k<4;k++){let curr=Array.from(geo);for(const id of curr){for(const e of adj.get(id)||[]){if(e.kind!=='geography'||!allow(e))continue;const tgt=other(e,id),v=by.get(tgt);if(v&&['city','district'].includes(v.kind)&&v.province===province)geo.add(tgt)}}}
+ geo.forEach(id=>group.add(id));
+ // Attach company, factory, and source-name entities using explicit location edges
+ let first=new Set();for(const id of geo){for(const e of adj.get(id)||[]){if(!allow(e)||!['location','corporate'].includes(e.kind))continue;const t=other(e,id),n=by.get(t);if(n&&['company','site','research','research_site'].includes(n.kind)){first.add(t);group.add(t)}}}
+ // Public cross-area site records are directly connected to province
+ for(const e of E){if(e.a===root||e.b===root){const t=other(e,root),n=by.get(t);if(n&&['site','research_site','company','research'].includes(n.kind)&&allow(e))group.add(t)}}
+ // Include owner and supporting company when site located in this region
+ const sited=Array.from(group).filter(id=>['site','research_site'].includes(by.get(id)?.kind));for(const id of sited){for(const e of adj.get(id)||[]){if(!allow(e)||!['corporate','identity'].includes(e.kind))continue;const t=other(e,id),n=by.get(t);if(n&&['company','research'].includes(n.kind))group.add(t)}}
+ // Include limited local company people and equipment for relational analysis
+ let firm=Array.from(group).filter(id=>['company','research'].includes(by.get(id)?.kind));for(const id of firm){let extras=(adj.get(id)||[]).filter(e=>allow(e)).map(e=>by.get(other(e,id))).filter(n=>n&&kindAllowed(n)&&['person','equipment','price','product'].includes(n.kind));for(const n of extras.slice(0,8))group.add(n.id)}
+ // Include identities between current members
+ for(const id of [...group]){for(const e of adj.get(id)||[]){if(e.kind!=='identity'||!allow(e))continue;let t=other(e,id),n=by.get(t);if(n&&['company','research'].includes(n.kind))group.add(t)}}
+ return group;}
+function overviewView(){let set=new Set(N.filter(n=>n.kind==='country'||n.kind==='province').map(n=>n.id));for(const item of D.province_companies||[]){if(item['正式/公開位置']==='是'||(state.pending&&item['僅歷史/待核']==='是'))set.add(item['公司ID'])}for(const n of N){if(n.kind==='research'&&n.category==='成品'&&n.province&&(!n.uncertain||state.pending))set.add(n.id)}return set}
+function peopleView(){let set=new Set(N.filter(n=>n.kind==='person'&&kindAllowed(n)).map(n=>n.id));for(const id of [...set])for(const e of adj.get(id)||[]){if(!allow(e))continue;let n=by.get(other(e,id));if(n&&n.kind==='company')set.add(n.id)}return set}
+function equipmentView(){let set=new Set(N.filter(n=>['equipment','price','product'].includes(n.kind)&&kindAllowed(n)).map(n=>n.id));for(const id of [...set])for(const e of adj.get(id)||[]){if(!allow(e))continue;let n=by.get(other(e,id));if(n&&n.kind==='company')set.add(n.id)}return set}
+function focusView(){let id=state.focus||state.selected;if(!by.has(id))return provinceView();let s=connected(id,state.depth);if(s.size>165){let arr=[id,...[...s].filter(n=>n!==id).slice(0,164)];return new Set(arr)}return s}
+function getVisible(){if(!D)return{nodes:[],edges:[]};let set=state.mode==='province'?provinceView():state.mode==='overview'?overviewView():state.mode==='people'?peopleView():state.mode==='equipment'?equipmentView():state.mode==='focus'?focusView():new Set(N.map(n=>n.id));set=new Set([...set].filter(id=>kindAllowed(by.get(id))));let nodes=N.filter(n=>set.has(n.id));let ids=new Set(nodes.map(n=>n.id));let edges=E.filter(e=>ids.has(e.a)&&ids.has(e.b)&&allow(e));if(state.mode==='overview'){ // verified summary connections are presentation-only; no inference of purchases
+  for(const d of D.province_companies||[]){let p='GEO:'+d['國家']+':'+d['省份'],c=d['公司ID'];if(ids.has(p)&&ids.has(c)&&((d['正式/公開位置']==='是')||(state.pending&&d['僅歷史/待核']==='是'))){edges.push({id:'derived:'+p+':'+c,a:p,b:c,kind:'location',level:d['正式/公開位置']==='是'?'verified':'pending',rel:'本省公司或工廠／資料庫彙總',source:d['來源ID']})}}
+ }
+ return{nodes,edges};}
+function seedHash(s){let h=2166136261;for(const c of String(s))h=Math.imul(h^c.charCodeAt(0),16777619);return h>>>0}
+function edgePower(e){const w={identity:2.8,corporate:2.35,people:2.25,equipment:1.65,product:1.55,price:1,location:.75,geography:.38};return (w[e.kind]||1)*(e.level==='pending'?.32:1)}
+function initNodeMetrics(){
+ const weighted=new Map(N.map(n=>[n.id,0])),all=new Map(N.map(n=>[n.id,0]));
+ for(const e of E){const v=edgePower(e);for(const id of [e.a,e.b]){all.set(id,(all.get(id)||0)+v);if(!['geography','location'].includes(e.kind))weighted.set(id,(weighted.get(id)||0)+v)}}
+ const max=Math.max(1,...weighted.values());
+ for(const n of N){if(typeof n.importance!=='number')n.importance=Math.max(.18,Math.min(1,.22+.6*Math.log1p(weighted.get(n.id)||0)/Math.log1p(max)));
+  if(!n.manual_priority)n.manual_priority=3;
+  n._degree=all.get(n.id)||0;n._bizDegree=weighted.get(n.id)||0;}
+ // Weighted label propagation fallback for pre-V5 JSONs, seeded by structural links rather than arbitrary coordinates.
+ if(N.some(n=>n.community===undefined)){
+   const labels=new Map(N.map(n=>[n.id,n.id]));
+   const order=N.slice().sort((a,b)=>b._bizDegree-a._bizDegree||a.id.localeCompare(b.id));
+   for(let step=0;step<18;step++){let changed=0;
+     for(const n of order){const votes=new Map();for(const e of adj.get(n.id)||[]){const id=other(e,n.id),key=labels.get(id);votes.set(key,(votes.get(key)||0)+edgePower(e))}
+       if(!votes.size)continue;const current=labels.get(n.id),winner=[...votes].sort((a,b)=>b[1]-a[1]||String(a[0]).localeCompare(String(b[0])))[0][0];if(winner!==current){labels.set(n.id,winner);changed++}}
+     if(changed<2)break;
+   }
+   const ids=new Map();for(const n of N){let label=labels.get(n.id);if(!ids.has(label))ids.set(label,ids.size);n.community=ids.get(label)}
+ }
+}
+var sim={alpha:0,timer:0,paused:false,ticks:0,communityCenters:new Map(),nodes:[],edges:[],positions:new Map(),lastActive:0};
+var posCache=new Map();
+var forceControls={repel:1,link:1,cluster:1,size:1};
+function manualFactor(n){return 1+(Number(n.manual_priority||3)-3)*.20}
+function influence(n){return Math.max(.18,Math.min(1.5,(Number(n.importance)||.3)*manualFactor(n)))}
+function nodeRadius(n){let base=n.kind==='province'?10.5:n.kind==='company'?9.6:n.kind==='research'?7.0:n.kind==='person'?6.7:n.kind==='site'||n.kind==='research_site'?7.0:n.kind==='country'?10.0:n.kind==='city'?7.8:n.kind==='district'?6.5:n.kind==='equipment'?6.1:5.5;
+ let impact=influence(n);return Math.max(4.3,Math.min(31,base*(.78+1.14*impact)*forceControls.size));}
+function buildCenters(nodes){const grouped=new Map();for(const n of nodes){const key=n.community===undefined?String(n.kind):String(n.community);if(!grouped.has(key))grouped.set(key,[]);grouped.get(key).push(n)}
+ let sorted=[...grouped].sort((a,b)=>Math.max(...b[1].map(influence))-Math.max(...a[1].map(influence))||b[1].length-a[1].length);
+ const centers=new Map();sorted.forEach(([key,list],idx)=>{const angle=2.399963229728653*idx,r=42+94*Math.sqrt(idx);centers.set(key,{x:r*Math.cos(angle),y:r*Math.sin(angle),count:list.length,leader:list.slice().sort((a,b)=>influence(b)-influence(a))[0].name})});return centers;
+}
+function initialPos(nodes,edges){
+ const positions=new Map(),centerId=state.mode==='focus'?(state.focus||state.selected):state.mode==='province'?'GEO:\u4e2d\u570b:'+province:'';
+ const centers=buildCenters(nodes);sim.communityCenters=centers;
+ const visible=new Set(nodes.map(n=>n.id));const dist=new Map();
+ if(centerId&&visible.has(centerId)){dist.set(centerId,0);let front=[centerId];for(let depth=1;depth<=4;depth++){let next=[];for(const a of front)for(const e of adj.get(a)||[]){if(!visible.has(e.a)||!visible.has(e.b))continue;const b=other(e,a);if(!dist.has(b)){dist.set(b,depth);next.push(b)}}front=next;}}
+ const rootCache=posCache.get(centerId);
+ for(const n of nodes){let x,y;const h=seedHash(n.id),angle=(h%65521)/65521*6.283185307,level=dist.get(n.id);
+  const group=centers.get(String(n.community))||{x:0,y:0};const size=Math.sqrt((group.count||1));
+  const near=23+Math.sqrt((h>>>10)%5000/5000)*(34+size*7);
+  x=group.x+Math.cos(angle)*near;y=group.y+Math.sin(angle)*near;
+  if(level!==undefined){const d=Math.max(1,level);const a=angle+(n.community||0)*.03;x=Math.cos(a)*(d===1?105:d===2?215:310)+group.x*.15;y=Math.sin(a)*(d===1?105:d===2?215:310)+group.y*.15;}
+  let cached=posCache.get(n.id);if(cached&&state.mode!=='focus'){x=cached.x;y=cached.y;}
+  if(cached&&state.mode==='focus'&&rootCache){x=(cached.x-rootCache.x)*.8;y=(cached.y-rootCache.y)*.8;}
+  if(n.id===centerId){x=0;y=0}
+  positions.set(n.id,{x,y,vx:0,vy:0,mass:1+influence(n)*2.3,pin:false});
+ }
+ return positions;
+}
+function startSim(heat){sim.alpha=Math.max(sim.alpha,heat||.66);sim.lastActive=performance.now();if(!sim.paused&&!sim.timer)sim.timer=requestAnimationFrame(simFrame)}
+function stopSim(){if(sim.timer)cancelAnimationFrame(sim.timer);sim.timer=0}
+function simFrame(){sim.timer=0;if(!D||sim.paused)return;const steps=state.nodes.length>350?1:2;for(let i=0;i<steps;i++)physicsStep();draw();if(sim.alpha>.015)sim.timer=requestAnimationFrame(simFrame)}
+function physicsStep(){
+ let nodes=sim.nodes,edges=sim.edges,positions=sim.positions;if(!nodes.length)return;const alpha=sim.alpha;
+ let f=new Map(nodes.map(n=>[n.id,{x:0,y:0}]));
+ const cell=150,grid=new Map();const key=(a,b)=>a+':'+b;
+ for(let i=0;i<nodes.length;i++){const p=positions.get(nodes[i].id);let cx=Math.floor(p.x/cell),cy=Math.floor(p.y/cell);let k=key(cx,cy);if(!grid.has(k))grid.set(k,[]);grid.get(k).push(i)}
+ // Spatially bounded repulsion + collision avoids all-pairs O(n^2) at 581+ nodes.
+ for(let i=0;i<nodes.length;i++){
+  const n=nodes[i],p=positions.get(n.id),fx=f.get(n.id),cx=Math.floor(p.x/cell),cy=Math.floor(p.y/cell);
+  for(let ox=-1;ox<=1;ox++)for(let oy=-1;oy<=1;oy++)for(const j of grid.get(key(cx+ox,cy+oy))||[]){if(j<=i)continue;
+   const o=nodes[j],q=positions.get(o.id),fy=f.get(o.id);let dx=p.x-q.x,dy=p.y-q.y,dsq=dx*dx+dy*dy+16,ds=Math.sqrt(dsq);
+   if(ds<.2){dx=(i%3-1)*1.4+.7;dy=(j%3-1)*1.5+.3;ds=Math.hypot(dx,dy)}
+   const collision=nodeRadius(n)+nodeRadius(o)+17;
+   let amount=forceControls.repel*(14000/(dsq+280)+Math.max(0,collision-ds)*.42);
+   if(n.community!==o.community)amount*=1.27;
+   let ax=dx/ds*amount,ay=dy/ds*amount;fx.x+=ax;fx.y+=ay;fy.x-=ax;fy.y-=ay;
+  }
+ }
+ for(const e of edges){const p=positions.get(e.a),q=positions.get(e.b);if(!p||!q)continue;let dx=q.x-p.x,dy=q.y-p.y,len=Math.hypot(dx,dy)||1;
+  const kind=e.kind;let rest=kind==='identity'?76:kind==='corporate'?100:kind==='people'?100:kind==='equipment'?120:kind==='product'?128:kind==='price'?105:kind==='geography'?122:kind==='location'?150:132;
+  rest+=nodeRadius(by.get(e.a))+nodeRadius(by.get(e.b));
+  const confidence=e.level==='pending'?.32:1;const k=Math.min(.24,.027*forceControls.link*edgePower(e));
+  const pull=Math.max(-14,Math.min(14,(len-rest)*k*confidence));let x=dx/len*pull,y=dy/len*pull;f.get(e.a).x+=x;f.get(e.a).y+=y;f.get(e.b).x-=x;f.get(e.b).y-=y;
+ }
+ const centerId=state.mode==='focus'?(state.focus||state.selected):state.mode==='province'?'GEO:\u4e2d\u570b:'+province:'';
+ for(const n of nodes){const p=positions.get(n.id),force=f.get(n.id);
+   if(n.id===centerId){p.x=0;p.y=0;p.vx=p.vy=0;continue}
+   const target=sim.communityCenters.get(String(n.community));
+   if(target){force.x+=(target.x-p.x)*.00145*forceControls.cluster;force.y+=(target.y-p.y)*.00145*forceControls.cluster}
+   force.x-=p.x*.00027;force.y-=p.y*.00027;
+   if(p.pin)continue;
+   const damping=.85;
+   p.vx=(p.vx+force.x*alpha/p.mass)*damping;p.vy=(p.vy+force.y*alpha/p.mass)*damping;
+   p.x+=Math.max(-17,Math.min(17,p.vx));p.y+=Math.max(-17,Math.min(17,p.vy));
+ }
+ sim.alpha*=.982;sim.ticks++;
+}
+const canvas=$('network'),ctx=canvas.getContext('2d'),area=$('graph'),tip=$('tip');let CW=1000,CH=700,pr=1;
+function resize(){let r=area.getBoundingClientRect();CW=r.width;CH=r.height;pr=Math.min(2,devicePixelRatio||1);canvas.width=Math.max(1,Math.floor(CW*pr));canvas.height=Math.max(1,Math.floor(CH*pr));canvas.style.width=CW+'px';canvas.style.height=CH+'px';draw()}
+function position(n){return state.positions.get(n.id)}
+function toCanvas(p){const a=state.rotation||0,c=Math.cos(a),s=Math.sin(a),x=p.x*c-p.y*s,y=p.x*s+p.y*c;return[CW/2+state.panX+x*state.scale,CH/2+state.panY+y*state.scale]}
+function toWorld(x,y){const px=(x-CW/2-state.panX)/state.scale,py=(y-CH/2-state.panY)/state.scale,c=Math.cos(state.rotation||0),s=Math.sin(state.rotation||0);return{x:px*c+py*s,y:-px*s+py*c}}
+function fit(){let ps=[...state.positions.values()];if(!ps.length)return;const coords=ps.map(p=>{const a=state.rotation||0,c=Math.cos(a),s=Math.sin(a);return [p.x*c-p.y*s,p.x*s+p.y*c]}),xs=coords.map(x=>x[0]),ys=coords.map(x=>x[1]);let xmin=Math.min(...xs)-140,xmax=Math.max(...xs)+140,ymin=Math.min(...ys)-125,ymax=Math.max(...ys)+125;state.scale=Math.max(.16,Math.min(1.75,Math.min((CW-65)/(xmax-xmin),(CH-105)/(ymax-ymin))));state.panX=-(xmax+xmin)/2*state.scale;state.panY=-(ymax+ymin)/2*state.scale;updateZoom()}
+function updateZoom(){$('zoomText').textContent=Math.round(state.scale*100)+'%';if($('rotText'))$('rotText').textContent=Math.round((state.rotation||0)*180/Math.PI)+'\u00b0'}
+function visibleRelations(id){return state.edges.filter(e=>e.a===id||e.b===id)}
+
+function drawCommunityContours(){if(!state.showContours||state.nodes.length>450)return;
+ const groups=new Map();for(const n of state.nodes){const p=state.positions.get(n.id);if(!p)continue;let k=String(n.community);if(!groups.has(k))groups.set(k,[]);groups.get(k).push({n,p})}
+ const candidates=[...groups.values()].filter(a=>a.length>=4).sort((a,b)=>b.length-a.length).slice(0,10);
+ for(const group of candidates){const coords=group.map(x=>toCanvas(x.p)),n=coords.length;let mx=coords.reduce((v,x)=>v+x[0],0)/n,my=coords.reduce((v,x)=>v+x[1],0)/n;
+ let xx=coords.map(x=>Math.abs(x[0]-mx)),yy=coords.map(x=>Math.abs(x[1]-my));let rx=Math.min(CW*.38,Math.max(42,Math.max(...xx)*.84+20)),ry=Math.min(CH*.38,Math.max(42,Math.max(...yy)*.84+20));
+ let lead=group.slice().sort((a,b)=>influence(b.n)-influence(a.n))[0].n,ink=color(lead);
+ ctx.save();ctx.beginPath();ctx.ellipse(mx,my,rx,ry,0,0,Math.PI*2);ctx.fillStyle=ink+'0b';ctx.fill();ctx.strokeStyle=ink+'2d';ctx.lineWidth=1;ctx.setLineDash([5,10]);ctx.stroke();ctx.restore();
+ }
+}
+
+function draw(){
+ if(!D||!CW||!CH)return;ctx.setTransform(pr,0,0,pr,0,0);ctx.clearRect(0,0,CW,CH);drawCommunityContours();
+ const focus=state.hover||state.selected,selected=focus&&state.nodes.some(n=>n.id===focus),neighbors=new Set([focus]);
+ for(const e of state.edges){if(e.a===focus)neighbors.add(e.b);if(e.b===focus)neighbors.add(e.a)}
+ // Affinity is perceptible both as physical distance and as line weight; questionable links are faded.
+ for(const e of state.edges){const p1=state.positions.get(e.a),p2=state.positions.get(e.b);if(!p1||!p2)continue;const a=toCanvas(p1),b=toCanvas(p2);if(Math.max(a[0],b[0]) < -150||Math.min(a[0],b[0])>CW+150||Math.max(a[1],b[1]) < -150||Math.min(a[1],b[1])>CH+150)continue;
+  const active=e.a===focus||e.b===focus,linkWeight=edgePower(e);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.strokeStyle=e.kind==='people'?'#fa97a9':e.kind==='location'?'#5dbee1':e.kind==='geography'?'#5ebfb7':e.kind==='equipment'?'#9d92e0':e.kind==='identity'?'#d8d5a9':'#879bb7';
+  ctx.globalAlpha=selected?(active?.9:.07):state.nodes.length>250?.12:state.nodes.length>130?.2:.33;
+  if(e.level==='pending')ctx.globalAlpha*=.55;
+  ctx.lineWidth=active?2.15:.65+Math.min(1.8,linkWeight*.44);ctx.setLineDash(e.level==='pending'?[4,6]:[]);ctx.stroke();}
+ ctx.setLineDash([]);ctx.globalAlpha=1;
+ const labelBoxes=[];const drawOrder=state.nodes.slice().sort((a,b)=>influence(a)-influence(b));
+ for(const n of drawOrder){const p=state.positions.get(n.id);if(!p)continue;const v=toCanvas(p),r=Math.max(3.3,nodeRadius(n)*Math.sqrt(state.scale)),active=neighbors.has(n.id),isFocus=focus===n.id;
+  if(v[0]<-60||v[0]>CW+60||v[1]<-60||v[1]>CH+60)continue;const cl=color(n);ctx.globalAlpha=selected?(active?1:.28):1;
+  if(active){ctx.beginPath();ctx.arc(v[0],v[1],r+7,0,Math.PI*2);ctx.fillStyle=cl+'33';ctx.fill()}
+  ctx.save();ctx.shadowColor=cl;ctx.shadowBlur=isFocus?24:active?13:Math.min(11,r);ctx.beginPath();if(['site','research_site'].includes(n.kind))ctx.roundRect(v[0]-r,v[1]-r,r*2,r*2,3);else ctx.arc(v[0],v[1],r,0,Math.PI*2);ctx.fillStyle=cl;ctx.fill();ctx.restore();
+  if(n.manual_priority>=5){ctx.beginPath();ctx.arc(v[0],v[1],r+3,0,Math.PI*2);ctx.strokeStyle='#f6dca5';ctx.lineWidth=1.7;ctx.stroke()}
+  if(n.uncertain){ctx.beginPath();ctx.arc(v[0],v[1],r+4.5,0,Math.PI*2);ctx.strokeStyle='#ffcb87';ctx.lineWidth=.7;ctx.setLineDash([2,4]);ctx.stroke();ctx.setLineDash([])}
+  const prominent=influence(n)>=.67||n.manual_priority>=5;
+  let label=isFocus||active||n.kind==='province'||(prominent&&['company','research','person'].includes(n.kind))||(state.scale>.85&&['company','city','research'].includes(n.kind))||(state.scale>1.2&&n.kind==='person');
+  if(label&&(state.scale>.30||active)){
+   let text=n.name,limit=isFocus?26:prominent?19:13;if(text.length>limit&&state.scale<1.2)text=text.slice(0,limit)+'\u2026';
+   let font=(isFocus||prominent?'700 ':'500 ')+(n.manual_priority>=5?13.2:prominent?12.3:isFocus?12.5:10.5)+'px system-ui,"Noto Sans TC","Microsoft JhengHei",sans-serif';ctx.font=font;ctx.textAlign='center';ctx.textBaseline='top';let width=ctx.measureText(text).width,bx=v[0]-width/2-4,by=v[1]+r+4,bw=width+8,bh=16;
+   let overlap=labelBoxes.some(b=>bx<b.x+b.w&&bx+bw>b.x&&by<b.y+b.h&&by+bh>b.y);
+   if(!overlap||isFocus||n.manual_priority>=5){labelBoxes.push({x:bx,y:by,w:bw,h:bh});ctx.lineWidth=3.5;ctx.strokeStyle='#06101ff5';ctx.strokeText(text,v[0],by);ctx.fillStyle=isFocus?'#fff':prominent?'#f0f5ff':'#d1dff0';ctx.fillText(text,v[0],by)}
+  }
+  ctx.globalAlpha=1;
+ }
+}
+function atNode(x,y){let list=state.nodes.filter(n=>state.positions.has(n.id)).sort((a,b)=>influence(a)-influence(b));for(let i=list.length-1;i>=0;i--){let n=list[i],p=state.positions.get(n.id),v=toCanvas(p),r=Math.max(12,nodeRadius(n)*Math.sqrt(state.scale)+6);if((x-v[0])**2+(y-v[1])**2<r*r)return n}return null}
+function render(){if(!D)return;stopSim();let vis=getVisible();state.nodes=vis.nodes;state.edges=vis.edges;state.positions=initialPos(vis.nodes,vis.edges);sim.nodes=vis.nodes;sim.edges=vis.edges;sim.positions=state.positions;sim.alpha=1;sim.ticks=0;
+ const initial=vis.nodes.length>350?68:vis.nodes.length>160?110:vis.nodes.length>80?145:170;
+ for(let i=0;i<initial;i++)physicsStep();for(const [id,p] of state.positions)posCache.set(id,{x:p.x,y:p.y});fit();setHeader();draw();drawInspector();renderInfluencers();startSim(.45)}
+function renderInfluencers(){const el=$('importantNodes');if(!el||!D)return;const list=N.filter(n=>n.kind==='company'||n.kind==='research').sort((a,b)=>influence(b)-influence(a)).slice(0,9);el.innerHTML=list.map(n=>'<button class="suggest" data-focus="'+esc(n.id)+'"><span style="color:'+color(n)+'">\u25cf</span> '+esc(n.name)+' <small>'+Math.round(influence(n)*100)+'</small></button>').join('');el.querySelectorAll('button').forEach(b=>b.onclick=()=>focusOn(b.dataset.focus))}
+window.KGDebug={getState:()=>({nodeCount:state.nodes.length,edgeCount:state.edges.length,selected:state.selected,mode:state.mode,rotation:state.rotation,alpha:sim.alpha,ticks:sim.ticks}),metrics:()=>N.map(n=>({id:n.id,name:n.name,importance:n.importance,priority:n.manual_priority,radius:nodeRadius(n),community:n.community})),positions:()=>[...state.positions].map(([id,p])=>({id,x:p.x,y:p.y})),restart:()=>startSim(1)};
+
+function setHeader(){let title={overview:'全國關係全景',province:province+'｜公司、廠區與人物',people:'人物與公司關係網',equipment:'設備／產品與製造商',focus:'聚焦：'+(by.get(state.focus||state.selected)?.name||'節點'),all:'全部節點與關係'};$('mainTitle').textContent=title[state.mode]||'供應商網絡';$('modeLabel').textContent=state.mode==='province'?'PROVINCE / CITY / FACILITY NETWORK':'CONNECTED KNOWLEDGE GRAPH';$('mainSub').textContent=state.nodes.length+' 個節點 · '+state.edges.length+' 條可見關係｜實線＝有來源，虛線＝待核';refreshModes()}
+function refreshModes(){document.querySelectorAll('[data-mode]').forEach(el=>el.classList.toggle('active',el.dataset.mode===state.mode));document.querySelectorAll('[data-depth]').forEach(el=>el.classList.toggle('active',Number(el.dataset.depth)===state.depth))}
+function setMode(mode){state.mode=mode;state.focus=mode==='focus'?state.selected:null;state.positions=new Map();render()}
+function setProvince(value){province=value;state.mode='province';state.focus=null;state.selected='GEO:中國:'+province;state.positions=new Map();$('provinceSelect').value=value;makeProvinceList();render()}
+function selectNode(id,zoom){if(!by.has(id))return;state.selected=id;if(zoom&&state.positions.has(id)){let p=state.positions.get(id);state.scale=Math.max(state.scale,.8);state.panX=-p.x*state.scale;state.panY=-p.y*state.scale;updateZoom()}drawInspector();draw()}
+function focusOn(id){if(!by.has(id))return;state.selected=id;state.focus=id;state.mode='focus';state.positions=new Map();render()}
+function section(k,v){return '<div class="field"><small>'+esc(k)+'</small>'+esc(v??'')+'</div>'}
+function getSource(id){let arr=String(id||'').split('|').filter(Boolean);return arr.map(r=>sources[r]).filter(Boolean)}
+function drawInspector(){let n=by.get(state.selected);if(!n){$('inspectorContent').innerHTML='請先選取節點。';return}let direct=(adj.get(n.id)||[]).filter(e=>allow(e)).map(e=>({e,other:by.get(other(e,n.id))})).filter(x=>x.other);direct.sort((a,b)=>Number(a.e.level==='pending')-Number(b.e.level==='pending'));
+ let str='<div class="inspectName">'+esc(n.name)+'</div><span class="pill">'+esc(pretty[n.kind]||n.kind)+'</span>'+(n.category?'<span class="pill">'+esc(n.category)+'</span>':'')+(n.uncertain?'<span class="pill" style="border-color:#d79a5b;color:#e7ba8f">資訊待核</span>':'');
+ str+='<div class="importanceBox"><div class="metric"><span>\u8996\u89ba\u5f71\u97ff\u529b\uff08\u975e\u4f01\u696d\u6392\u540d\uff09</span><b>'+Math.round(influence(n)*100)+' / 150</b></div><div class="small">\u7db2\u8def\u7d50\u69cb\u8207\u696d\u52d9\u95dc\u4fc2\u6b0a\u91cd\uff1a'+Math.round((n.importance||0)*100)+' \u00b7 \u7d50\u69cb\u76f4\u63a5\u9023\u7dda '+(adj.get(n.id)||[]).length+'</div><label class="small">\u4eba\u5de5\u95dc\u6ce8\u512a\u5148\u7d1a (1~5)<input id="prioritySlider" type="range" min="1" max="5" step="1" value="'+(n.manual_priority||3)+'"></label><div id="priorityValue" class="small">'+(n.manual_priority||3)+' / 5 \u00b7 \u50c5\u5f71\u97ff\u756b\u9762\u986f\u793a</div></div>';
+ str+='<div class="inBtns"><button class="btn accent" id="viewDossier">完整情報頁</button><button class="btn" id="focusThis">展開關係</button></div>';
+ if(['province','city','district'].includes(n.kind)){
+ let cnt=state.nodes.filter(o=>['company','research','site','research_site'].includes(o.kind)).length;str+=section('目前視角相關節點',cnt+' 個')+section('所在區域',n.country+'／'+(n.province||''));
+ if(n.kind==='province'&&D){let loc=(D.province_companies||[]).filter(x=>x['國家']===n.country&&x['省份']===n.name);let known=loc.filter(x=>x['正式/公開位置']==='是');let hist=loc.filter(x=>x['正式/公開位置']!=='是');let publicR=(D.research_records||[]).filter(x=>x.public_region===n.name&&['A','B'].includes(x.grade));let names=(D.research_records||[]).filter(x=>x.name_region===n.name&&!(x.public_region===n.name&&['A','B'].includes(x.grade)));let sitesHere=(D.nodes||[]).filter(x=>x.kind==='research_site'&&x.province===n.name);
+ str+='<div class="insSub">本省廠商清單 · 可核公司 '+known.length+' / 公開匹配 '+publicR.length+'</div>';
+ for(const item of known.slice(0,24))str+='<div class="neighbor" data-node="'+esc(item['公司ID'])+'"><b style="color:#9edc93">●</b> '+esc(item['廠商/法人'])+'<small>'+esc(item['省份關聯類型'])+'｜已定位</small></div>';
+ for(const item of publicR.slice(0,24))str+='<div class="neighbor" data-node="'+esc(item.id)+'"><b style="color:#efcf82">●</b> '+esc(item.name)+'<small>公開匹配 '+esc(item.grade)+'｜'+esc(item.category)+'</small></div>';
+ if(state.pending){str+='<div class="insSub">僅歷史／名稱地點線索 · '+(hist.length+names.length)+' 筆</div>';for(const item of hist.slice(0,9))str+='<div class="neighbor" data-node="'+esc(item['公司ID'])+'">◌ '+esc(item['廠商/法人'])+'<small>歷史或待核</small></div>';for(const item of names.slice(0,38))str+='<div class="neighbor" data-node="'+esc(item.id)+'">◌ '+esc(item.name)+'<small>僅名稱含地名｜非已核實工廠</small></div>'}
+ if(sitesHere.length)str+='<div class="insSub">另有跨區廠區線索 '+sitesHere.length+' 筆，請點圖中的橙色節點查看投產狀態。</div>';
+ }
+ }else if(n.detail){for(const [key,value] of Object.entries(n.detail).filter(([,v])=>v!==''&&v!=null).slice(0,8))str+=section(key,typeof value==='object'?JSON.stringify(value):String(value))}
+ str+='<div class="insSub">直接關係（來源標記）· '+direct.length+'</div><div class="neighbors">';for(const {e,other:o} of direct.slice(0,65)){str+='<div class="neighbor" data-node="'+esc(o.id)+'"><b style="color:'+color(o)+'">●</b> '+esc(o.name)+'<small>'+esc(e.rel)+' · '+(e.level==='pending'?'待核':'有來源')+'</small></div>'}str+='</div>';
+ if(n.source){str+='<div class="insSub">來源線索</div>';for(const s of getSource(n.source))str+='<div class="source">'+esc(s.name)+(s.url?'<br><a target="_blank" rel="noopener noreferrer" href="'+esc(s.url)+'">查看來源</a>':'')+'</div>';}
+ $('inspectorContent').innerHTML=str;$('viewDossier').onclick=()=>openDossier(n.id);
+ let prioritySlider=$('prioritySlider');if(prioritySlider){prioritySlider.oninput=e=>{n.manual_priority=Number(e.target.value);$('priorityValue').textContent=e.target.value+' / 5';draw();renderInfluencers();startSim(.82)};prioritySlider.onchange=()=>drawInspector()}$('focusThis').onclick=()=>focusOn(n.id);$('inspectorContent').querySelectorAll('.neighbor[data-node]').forEach(el=>el.onclick=()=>{selectNode(el.dataset.node,true);if(window.innerWidth<760)focusOn(el.dataset.node)});
+}
+function makeProvinceList(){if(!D)return;let pr=N.filter(n=>n.kind==='province'&&n.country==='中國').map(n=>n.name).sort((a,b)=>a.localeCompare(b,'zh-Hant'));let tally=new Map();for(const e of E){if(e.kind==='location'&&e.a.startsWith('GEO:中國:')&&e.a.split(':').length===3){tally.set(e.a,(tally.get(e.a)||0)+1)}}$('provinceList').innerHTML=pr.map(name=>'<button data-pr="'+esc(name)+'" class="prov '+(name===province?'active':'')+'">'+esc(name)+'<small>地區關係 '+(tally.get('GEO:中國:'+name)||0)+'</small></button>').join('');$('provinceList').querySelectorAll('[data-pr]').forEach(x=>x.onclick=()=>setProvince(x.dataset.pr));}
+function search(){let q=$('search').value.trim().toLowerCase(),res=$('searchResults');if(!q){res.innerHTML='<div class="muted tiny" style="padding:8px">Search: supplier / person / region / equipment</div>';return}let arr=N.filter(n=>(n.name+' '+(n.category||'')+' '+(n.province||'')+' '+(n.detail?.['正式名稱']||'')).toLowerCase().includes(q)).slice(0,20);res.innerHTML=arr.length?arr.map(n=>'<button class="suggest" data-id="'+esc(n.id)+'">'+esc(n.name)+' <small class="muted">· '+esc(pretty[n.kind])+'</small></button>').join(''):'<div class="muted tiny">找不到符合的節點</div>';res.querySelectorAll('button').forEach(x=>x.onclick=()=>{focusOn(x.dataset.id);$('searchResults').innerHTML='';if(window.innerWidth<760)$('sidebar').classList.remove('open')})}
+function relatedByKind(id,types){return (adj.get(id)||[]).map(e=>({node:by.get(other(e,id)),edge:e})).filter(x=>x.node&&types.includes(x.node.kind))}
+function dossierHTML(n){let txt='<div class="xmeta">知識圖譜獨立情報檔｜2026-11-06｜節點 '+esc(n.id)+'</div><h1>'+esc(n.name)+'</h1><div class="xmeta">'+esc(pretty[n.kind]||n.kind)+' · '+esc(n.category||'未分類')+' · '+esc(n.country||'')+' '+esc(n.province||'')+'</div><div class="privacy">本檔保留原始來源和證據層級。「尚待核實」不等於已發生；名稱地名不代表實際工廠。請勿公開內部人物或交易資料。</div>';
+ txt+='<h2>01｜公司及基本情報</h2><table><tbody>';for(const [key,v] of Object.entries(n.detail||{})){if(v===null||v==='')continue;txt+='<tr><td>'+esc(key)+'</td><td>'+esc(typeof v==='object'?JSON.stringify(v):String(v))+'</td></tr>'}txt+='</tbody></table>';
+ if(n.kind==='company'||n.kind==='research'){
+ let companies=relatedByKind(n.id,['company','research']),sites=relatedByKind(n.id,['site','research_site']),people=relatedByKind(n.id,['person']),equip=relatedByKind(n.id,['equipment','price']),prod=relatedByKind(n.id,['product']);
+ // For a company linked to its site through group path, also list sites with explicit ownership id in their metadata
+ txt+='<h2>02｜所屬集團／關聯企業</h2>'+(companies.map(x=>'<div class="dataCard">'+esc(x.node.name)+'｜'+esc(x.edge.rel)+(x.edge.level==='pending'?' <span class="pending">（待核）</span>':'')+'</div>').join('')||'<div class="sectionInfo">尚無已建立的公司關聯。</div>');
+ txt+='<h2>03｜工廠與跨區據點</h2>'+(sites.map(x=>'<div class="dataCard"><strong>'+esc(x.node.name)+'</strong>｜'+esc(x.edge.rel)+'<br>'+esc(Object.values(x.node.detail||{}).filter(Boolean).slice(0,4).join('｜'))+'</div>').join('')||'<div class="sectionInfo">沒有可直接關聯的工廠／分廠紀錄；不代表沒有工廠。</div>');
+ txt+='<h2>04｜人物與歷史任職</h2>'+(people.map(x=>'<div class="dataCard">'+esc(x.node.name)+' — '+esc(x.edge.rel)+(x.edge.level==='pending'?' <span class="pending">（待核）</span>':'')+'</div>').join('')||'<div class="sectionInfo">尚無直接可核人物關聯。</div>');
+ txt+='<h2>05｜設備效能與歷史價格</h2>'+(equip.map(x=>'<div class="dataCard"><strong>'+esc(x.node.name)+'</strong>｜'+esc(x.edge.rel)+'<br>'+esc(Object.entries(x.node.detail||{}).filter(([,v])=>v).map(([k,v])=>k+'：'+v).join('；'))+'</div>').join('')||'<div class="sectionInfo">尚未有逐設備可核資料。</div>');
+ txt+='<h2>06｜產品與製程技術</h2>'+(prod.map(x=>'<div class="dataCard">'+esc(x.node.name)+'｜'+esc(x.edge.rel)+'</div>').join('')||'<div class="sectionInfo">請參考上方原始產品欄；具體產能待核。</div>');
+ }
+ txt+='<h2>07｜直接關係與證據</h2><table><thead><tr><th>另一節點</th><th>關係種類</th><th>可信狀態</th><th>來源</th></tr></thead><tbody>';for(const e of adj.get(n.id)||[]){let o=by.get(other(e,n.id));if(!o)continue;txt+='<tr><td>'+esc(o.name)+'</td><td>'+esc(e.rel)+'</td><td>'+esc(e.level==='pending'?'待核':'有來源')+'</td><td>'+esc(e.source||'')+'</td></tr>'}txt+='</tbody></table>';
+ txt+='<h2>08｜來源與後續待核</h2>';let urls=[];for(const u of n.urls||[])if(/^https?:\/\//.test(u))urls.push(u);for(const s of getSource(n.source))if(s.url)urls.push(s.url);urls=[...new Set(urls)];if(urls.length)txt+='<ul>'+urls.map(u=>'<li><a href="'+esc(u)+'" target="_blank" rel="noopener noreferrer">'+esc(u)+'</a></li>').join('')+'</ul>';else txt+='<p class="sectionInfo">本節點目前沒有直接可查的公開網頁連結，請依來源ID回查。</p>';txt+='<p class="sectionInfo">所有設備數量、速度與價格均依資料的時點與口徑保留，不推定為現況或已成交價。</p>';return txt;}
+let currentDossier=null;function openDossier(id){let n=by.get(id);if(!n)return;currentDossier=id;$('dossierContent').innerHTML=dossierHTML(n);$('modal').classList.add('open');$('paper').scrollTop=0}
+function closeDossier(){$('modal').classList.remove('open');currentDossier=null}
+function exportDossier(){if(!currentDossier)return;let n=by.get(currentDossier),styles=[...document.querySelectorAll('style')].map(s=>s.textContent).join('\n');let html='<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><title>'+esc(n.name)+'｜廠商情報</title><style>'+styles+'body{overflow:auto}.paper{max-height:none;overflow:visible;margin:30px auto}.paperBody{padding:30px}.privacy{display:block}@media print{.paper{margin:0}}</style><article class="paper"><div class="paperBody">'+dossierHTML(n)+'</div></article></html>';let a=document.createElement('a'),url=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));a.href=url;a.download=n.name.replace(/[\\/:*?"<>|]/g,'_')+'_廠商情報.html';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)}
+function initInteractions(){document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));document.querySelectorAll('[data-depth]').forEach(b=>b.onclick=()=>{state.depth=Number(b.dataset.depth);state.mode==='focus'?render():refreshModes()});$('provinceSelect').onchange=e=>setProvince(e.target.value);$('showPending').onchange=e=>{state.pending=e.target.checked;render()};$('showPeople').onchange=e=>{state.people=e.target.checked;render()};$('showEquipment').onchange=e=>{state.equipment=e.target.checked;render()};$('search').oninput=search;
+ 
+ for(const [id,key,out] of [['linkSlider','link','linkValue'],['repelSlider','repel','repelValue'],['clusterSlider','cluster','clusterValue'],['sizeSlider','size','sizeValue']]){$(id).oninput=e=>{forceControls[key]=Number(e.target.value);$(out).textContent=forceControls[key].toFixed(1);startSim(.94);draw()}}
+ $('pausePhysics').onclick=()=>{sim.paused=!sim.paused;$('pausePhysics').textContent=sim.paused?'\u7e7c\u7e8c\u7269\u7406':'\u66ab\u505c\u7269\u7406';if(sim.paused)stopSim();else startSim(.94)};
+ $('reflow').onclick=()=>{posCache.clear();render()};
+
+ $('downloadWeights').onclick=()=>{if(!D)return;const out={schema:'supplier-kg-v5-visual-priority',updated:new Date().toISOString(),overrides:N.filter(n=>n.manual_priority!==3).map(n=>({id:n.id,manual_priority:n.manual_priority}))};let a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(out,null,2)],{type:'application/json'}));a.href=url;a.download='visual_priority_overrides.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)};
+ $('loadWeights').onchange=async e=>{try{if(!D)return;const f=e.target.files?.[0];if(!f)return;if(f.size>200*1024)throw Error('file is too large');const payload=JSON.parse(await f.text());if(payload.schema!=='supplier-kg-v5-visual-priority'||!Array.isArray(payload.overrides))throw Error('wrong format');for(const x of payload.overrides){const node=by.get(x.id);if(node&&Number.isFinite(Number(x.manual_priority)))node.manual_priority=Math.max(1,Math.min(5,Number(x.manual_priority)))}render()}catch(err){alert('Invalid priority override: '+err.message)}};
+
+ $('rotateLeft').onclick=()=>{state.rotation-=Math.PI/10;updateZoom();draw()};
+ $('rotateRight').onclick=()=>{state.rotation+=Math.PI/10;updateZoom();draw()};
+ $('resetRotation').onclick=()=>{state.rotation=0;updateZoom();draw()};
+ $('showContours').onchange=e=>{state.showContours=e.target.checked;draw()};
+ $('fit').onclick=()=>{fit();draw()};$('zoomIn').onclick=()=>{state.scale=Math.min(5,state.scale*1.27);updateZoom();draw()};$('zoomOut').onclick=()=>{state.scale=Math.max(.15,state.scale/1.27);updateZoom();draw()};$('backProvince').onclick=()=>setProvince(province);$('openDossier').onclick=()=>{if(state.selected&&by.has(state.selected))openDossier(state.selected)};$('closeDossier').onclick=closeDossier;$('exportDossier').onclick=exportDossier;$('printDossier').onclick=()=>window.print();$('modal').onclick=e=>{if(e.target===$('modal'))closeDossier()};
+ $('savePNG').onclick=()=>{draw();let a=document.createElement('a');a.href=canvas.toDataURL('image/png');a.download='供應商知識圖譜_'+state.mode+'_'+province+'.png';a.click()};
+ canvas.addEventListener('wheel',function(e){e.preventDefault();let r=canvas.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,p=toWorld(x,y),f=Math.exp(-e.deltaY*.001);state.scale=Math.max(.12,Math.min(5,state.scale*f));state.panX=x-CW/2-p.x*state.scale;state.panY=y-CH/2-p.y*state.scale;updateZoom();draw()},{passive:false});
+ const pointers=new Map();let pinch=null;
+ canvas.addEventListener('contextmenu',e=>e.preventDefault());
+ canvas.addEventListener('pointerdown',function(e){canvas.setPointerCapture(e.pointerId);const r=canvas.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+   pointers.set(e.pointerId,{x,y});
+   if(pointers.size===2){const p=[...pointers.values()],dx=p[1].x-p[0].x,dy=p[1].y-p[0].y;pinch={dist:Math.hypot(dx,dy),angle:Math.atan2(dy,dx),mid:{x:(p[0].x+p[1].x)/2,y:(p[0].y+p[1].y)/2},scale:state.scale,rotation:state.rotation,panX:state.panX,panY:state.panY};state.drag=null;return}
+   const n=atNode(x,y);state.drag={x,y,lastX:x,lastY:y,moved:false,node:n?.id||null,rotate:e.altKey||e.button===2};if(n&&state.positions.has(n.id))state.positions.get(n.id).pin=true;canvas.classList.add('dragging');
+ });
+ canvas.addEventListener('pointermove',function(e){const rect=canvas.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top;
+   if(pointers.has(e.pointerId))pointers.set(e.pointerId,{x,y});
+   if(pointers.size===2&&pinch){const p=[...pointers.values()],dx=p[1].x-p[0].x,dy=p[1].y-p[0].y,mid={x:(p[0].x+p[1].x)/2,y:(p[0].y+p[1].y)/2};state.scale=Math.max(.12,Math.min(4.8,pinch.scale*Math.hypot(dx,dy)/(pinch.dist||1)));state.rotation=pinch.rotation+Math.atan2(dy,dx)-pinch.angle;state.panX=pinch.panX+mid.x-pinch.mid.x;state.panY=pinch.panY+mid.y-pinch.mid.y;updateZoom();draw();return}
+   if(state.drag){const d=state.drag;if(Math.abs(d.x-x)+Math.abs(d.y-y)>5)d.moved=true;
+     if(d.moved){if(d.rotate){state.rotation+=(x-d.lastX)*.012;updateZoom()}else if(d.node&&state.positions.has(d.node)){const p=state.positions.get(d.node),dx=(x-d.lastX)/state.scale,dy=(y-d.lastY)/state.scale,c=Math.cos(state.rotation||0),s=Math.sin(state.rotation||0);p.x+=dx*c+dy*s;p.y+=-dx*s+dy*c;p.vx=p.vy=0;startSim(.85)}else{state.panX+=x-d.lastX;state.panY+=y-d.lastY}}
+     d.lastX=x;d.lastY=y;draw();return;}
+   const n=atNode(x,y);if(n?.id!==state.hover){state.hover=n?.id||null;draw()}
+   if(n){tip.style.display='block';tip.style.left=Math.min(CW-260,x+13)+'px';tip.style.top=Math.min(CH-90,y+14)+'px';tip.innerHTML='<b>'+esc(n.name)+'</b><small>'+esc(pretty[n.kind])+' | '+(adj.get(n.id)||[]).length+' links | impact '+Math.round(influence(n)*100)+'</small>'}else tip.style.display='none';
+ });
+ function releasePointer(e){const d=state.drag;const wasMulti=pointers.size>=2;pointers.delete(e.pointerId);if(pointers.size<2)pinch=null;state.drag=null;canvas.classList.remove('dragging');if(d?.node&&state.positions.has(d.node)){state.positions.get(d.node).pin=false;startSim(.72)}if(!d||d.moved||wasMulti)return;const r=canvas.getBoundingClientRect(),n=atNode(e.clientX-r.left,e.clientY-r.top);if(n)selectNode(n.id)}
+ canvas.addEventListener('pointerup',releasePointer);canvas.addEventListener('pointercancel',releasePointer);
+ canvas.addEventListener('pointerleave',()=>{if(!state.drag){state.hover=null;tip.style.display='none';draw()}});
+ canvas.addEventListener('dblclick',function(e){const r=canvas.getBoundingClientRect(),n=atNode(e.clientX-r.left,e.clientY-r.top);if(n)focusOn(n.id)});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDossier()});$('navOpen').onclick=()=>$('sidebar').classList.toggle('open');window.addEventListener('resize',()=>{resize();fit();draw();$('navOpen').style.display=window.innerWidth<760?'inline-block':'none'});$('navOpen').style.display=window.innerWidth<760?'inline-block':'none';
+ $('filePicker').addEventListener('change',async function(e){try{let file=e.target.files?.[0];if(!file)return;if(file.size>30*1024*1024)throw Error('檔案過大，限30MB');let data=JSON.parse(await file.text());load(data);$('fileHint').textContent='已載入 '+file.name;}catch(err){$('fileHint').textContent='載入失敗：'+err.message;alert('載入失敗：'+err.message)}})
+}
+initInteractions();resize();let el=$('embedded-data');let text=el.textContent.trim();if(text&&text!=='{}'){try{load(JSON.parse(text))}catch(e){$('emptyScreen').style.display='flex';$('fileHint').textContent=e.message;console.error(e)}}else{$('emptyScreen').style.display='flex';$('fileHint').textContent=location.protocol==='file:'?'請由左側選擇知識圖譜 JSON':'此為公開展示工具。請下載 HTML 再於本機載入私人資料。';if(location.protocol!=='file:'){$('filePicker').disabled=true;$('importCaption').textContent='公開頁不允許選取內部檔案；請下載 HTML 離線使用。'}}
+})();
+</script>
+</body>
+</html>
