@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; frame-src 'none'; object-src 'none'; form-action 'none'; base-uri 'none'">
+<title>供應商情報｜純離線私有資料檢視工具</title>
+<style>
+:root{--bg:#0a1425;--p:#10223a;--p2:#17314b;--border:#31516c;--t:#f0f7ff;--m:#afc3d6;--teal:#50d8c5;--blue:#9cccf4}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:"Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif;color:var(--t)}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #65ddd1;outline-offset:2px}header{border-bottom:1px solid var(--border);padding:21px 27px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;background:#0d1d32}h1{font-size:22px;margin:0}h2{font-size:17px;margin:0}h3{font-size:14px;margin:16px 0 8px}.muted{color:var(--m);font-size:12px;line-height:1.8}.ribbon{background:#173d43;color:#bafbf1;border:1px solid #3d807e;border-radius:20px;padding:7px 12px;font-size:12px}.wrap{display:grid;grid-template-columns:270px minmax(0,1fr);min-height:calc(100vh - 90px)}aside{padding:21px 13px;background:#0f2137;border-right:1px solid var(--border);max-height:calc(100vh - 90px);overflow:auto}.primary{border:1px solid #59b7b9;background:#184b58;color:#e4fffd;font-weight:700;padding:10px 16px;border-radius:10px}.soft{padding:10px 13px;border:1px solid #456680;background:#182f48;color:#d8edff;border-radius:10px}.upload{position:relative;display:block;background:#162d47;border:1px dashed #6a96aa;padding:24px;border-radius:13px;margin:10px 0 17px;line-height:1.7;font-size:13px}.upload input{margin-top:12px;max-width:100%}.upload .warn{color:#f3c08c}.label{display:block;font-size:11px;color:#96becf;font-weight:800;letter-spacing:.07em;margin:16px 0 9px}.place{display:flex;align-items:center;justify-content:space-between;width:100%;text-align:left;padding:10px 11px;border:1px solid #274660;border-radius:9px;margin:5px 0;background:#152d44;color:var(--t);font-size:12px}.place.active{border-color:#50d8c5;background:#124249}.place small{color:#b6ccdb}main{padding:23px 26px 60px;min-width:0}.card{border:1px solid #35536c;border-radius:12px;padding:15px;background:#152b41;cursor:pointer;min-height:118px}.card:hover{border-color:#6cbac2;background:#1a364c}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:11px}.name{font-size:15px;font-weight:750;margin-bottom:6px}.tag{display:inline-block;border:1px solid #476987;border-radius:20px;color:#c0e0f2;padding:3px 9px;font-size:11px;margin-right:6px;margin-bottom:7px}.grade-A{color:#9ff0c6;border-color:#438c72}.grade-B{color:#eddd95;border-color:#a8995e}.grade-C,.grade-PPT{color:#ffbda4;border-color:#bb7c6c}.filter{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:16px 0}.filter select,.filter input{padding:10px;background:#0f2137;border:1px solid #385d75;color:var(--t);border-radius:9px;min-width:125px;max-width:330px}.statrow{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.stat{border:1px solid #365771;padding:12px 15px;border-radius:12px;background:#16334a;min-width:142px}.stat b{display:block;font-size:24px;color:#bff7ed}.stat small{font-size:11px;color:#adc7d7}.desc{font-size:12px;color:#adc4d8;line-height:1.9}.section{margin-top:22px}.box{padding:14px;background:#192d43;border-left:3px solid #59bec4;font-size:13px;line-height:1.9;margin:9px 0}.detail{display:none;position:fixed;inset:0;z-index:8;background:#060d18e8;padding:18px;justify-content:flex-end}.detail.open{display:flex}.panel{width:min(760px,100%);height:100%;overflow:auto;background:#edf3f8;color:#1b3044;border-radius:14px;padding:26px}.panel button{background:#dce8f5;border:1px solid #b4c8dc;border-radius:8px;padding:8px 12px;cursor:pointer}.panel h2{font-size:23px}.panel a{color:#145688;overflow-wrap:anywhere}.panel .box{background:#fff;color:#294258;border-color:#4d95aa}.table{border-collapse:collapse;width:100%;font-size:12px}.table td{padding:9px 10px;border-bottom:1px solid #cbd9e8;vertical-align:top;overflow-wrap:anywhere}.table td:first-child{color:#577085;width:130px}.graph{max-height:64vh;overflow:auto;padding:14px;background:#0c192c;border:1px solid #31506a;border-radius:13px}.graph svg{min-width:1100px;display:block}.headnote{font-size:13px;color:#ffdb9d;background:#382c22;border:1px solid #74573a;border-radius:9px;padding:12px;line-height:1.8}@media(max-width:780px){header{padding:13px}h1{font-size:17px}.wrap{grid-template-columns:1fr}aside{max-height:none;border-right:0;border-bottom:1px solid var(--border)}main{padding:17px 13px}.cards{grid-template-columns:1fr}.panel{padding:17px}.stat{min-width:105px}.filter select,.filter input{max-width:100%}}
+</style>
+</head>
+<body>
+<header><div><h1>供應商情報｜純離線檢視工具</h1><div class="muted">地區 → 廠商 → 廠區 → 人物／設備・原始來源</div></div><div class="ribbon">不連線、不上傳、不在此網頁留存資料</div></header>
+<div class="wrap"><aside><div class="label">01 / 開啟本機私有資料</div><div class="upload">下載本頁 HTML，於自己的電腦開啟後選取 V4 JSON 資料檔。<br><b>來源資料不包含在 GitHub。</b><br><input type="file" id="localFile" accept=".json,application/json"><div class="muted" id="fileHint"></div></div><div class="label">02 / 國家或省份</div><div id="places" class="muted">尚未載入資料。</div></aside>
+<main><div class="headnote" id="notice">此頁是公開釋出的純程式工具，預設沒有任何企業或人物資訊。<b>若需載入私有資料，請先將 HTML 另存並以 file:// 開啟。</b> </div>
+<div class="statrow" id="stats"></div><div class="filter"><input id="query" placeholder="搜尋廠商、人名、產品或設備" disabled><select id="category" disabled><option value="">全部類別</option><option>原物料</option><option>成品</option><option>技術零件</option><option>技術附屬設備</option><option>主要生產設備</option><option>舊V3成品廠</option><option>舊V3機械廠</option><option>舊V3其他</option></select><select id="mode" disabled><option value="list">廠商清單</option><option value="graph">省市廠商關係圖</option></select></div><div id="results"><div class="box">這裡會顯示來源分級及可追溯的廠商名錄。</div></div></main></div>
+<div class="detail" id="detail"><div class="panel"><button id="close">關閉 ✕</button><div id="detailContent"></div></div></div>
+<script>
+(function(){
+"use strict";
+var D=null,area="中國/浙江省",q="",cat="",mode="list";
+var $=function(id){return document.getElementById(id)};
+var esc=function(s){return String(s===undefined||s===null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
+var txt=function(s){return String(s===undefined||s===null?"":s)};
+function place(r){
+ if((r.grade==="A"||r.grade==="B")&&r.public_region)return (r.public_country||"中國")+"/"+r.public_region;
+ if(r.name_region)return (r.name_country||"中國")+"/"+r.name_region;
+ return "待定位/位置未核";
+}
+function oldPlace(c){return (c.country||"待定位")+"/"+(c.province||"位置未核")}
+function allAreas(){var s=new Set();(D.research_records||[]).forEach(function(r){s.add(place(r))});(D.companies||[]).forEach(function(c){s.add(oldPlace(c))});return Array.from(s).sort(function(a,b){return a.localeCompare(b,"zh-Hant")})}
+function filtered(){
+ var items=[];(D.research_records||[]).forEach(function(r){if(place(r)===area)items.push({id:r.id,name:r.name,kind:"research",category:r.category,grade:r.grade,ref:r})});
+ (D.companies||[]).forEach(function(c){if(oldPlace(c)===area)items.push({id:c["公司ID"],name:c["名稱"],kind:"old",category:"舊V3"+(c["主分類"]||"其他"),grade:"V3",ref:c})});
+ return items.filter(function(x){if(cat&&x.category!==cat)return false;if(!q)return true;var d=x.ref;return (txt(x.name)+txt(d.product)+txt(d["產品與技術"])+txt(d.matched_entity)+txt(d["情報摘要"])+txt(x.id)).toLowerCase().includes(q)});
+}
+function areaList(){
+ var areas=allAreas();$("places").innerHTML=areas.map(function(a){var cnt=(D.research_records||[]).filter(function(r){return place(r)===a}).length;var old=(D.companies||[]).filter(function(c){return oldPlace(c)===a}).length;return '<button class="place '+(area===a?"active":"")+'" data-area="'+esc(a)+'"><span>'+esc(a)+'</span><small>新'+cnt+' / V3 '+old+'</small></button>'}).join("");
+ $("places").querySelectorAll("[data-area]").forEach(function(b){b.addEventListener("click",function(){area=b.getAttribute("data-area");render()})})
+}
+function stats(items){$("stats").innerHTML='<div class="stat"><b>'+items.length+'</b><small>本地區來源節點</small></div><div class="stat"><b>'+items.filter(function(x){return x.kind==="research"}).length+'</b><small>新簡報名稱</small></div><div class="stat"><b>'+items.filter(function(x){return x.kind==="old"}).length+'</b><small>原V3公司節點</small></div><div class="stat"><b>'+items.filter(function(x){return x.grade==="A"||x.grade==="B"}).length+'</b><small>新名錄A/B匹配</small></div>'}
+function cards(items){return '<div class="cards">'+items.map(function(x){var r=x.ref;return '<article class="card" role="button" tabindex="0" data-id="'+esc(x.id)+'"><div class="name">'+esc(x.name)+'</div><span class="tag '+(x.kind==="research"?"grade-"+x.grade:"")+'">'+esc(x.category)+'</span><span class="tag">'+esc(x.grade)+'</span><div class="desc">'+esc(x.kind==="research"?r.product:r["產品與技術"])+'</div></article>'}).join("")+"</div>"}
+function svg(items){
+ var gap=50,y=85,h=Math.max(280,items.length*gap+110),s='<div class="graph"><svg xmlns="http://www.w3.org/2000/svg" width="1200" height="'+h+'" viewBox="0 0 1200 '+h+'"><rect width="1200" height="'+h+'" fill="#0c192c"/><text x="18" y="34" font-size="15" fill="#96f1df">國家 / 省份</text><text x="345" y="34" font-size="15" fill="#b8d8f0">來源節點類別</text><text x="630" y="34" font-size="15" fill="#b8d8f0">廠商 / 來源名稱</text>';
+ s+='<rect x="15" y="65" width="240" height="49" rx="8" fill="#133c4a" stroke="#35bcae"/><text x="27" y="94" font-size="15" fill="#edfffa">'+esc(area)+'</text>';
+ items.forEach(function(item,i){var yy=y+i*gap;var color=item.kind==="research"?(item.grade==="A"?"#5dcfb6":item.grade==="B"?"#d9c37d":"#bb948e"):"#8cb4de";s+='<path d="M255 91 C288 91 285 '+(yy+19)+' 333 '+(yy+19)+'" fill="none" stroke="'+color+'" stroke-opacity=".55"/><rect x="335" y="'+yy+'" width="235" height="38" rx="7" fill="#19374d" stroke="'+color+'"/><text x="348" y="'+(yy+24)+'" font-size="12" fill="#e3f1ff">'+esc(item.category)+'</text><path d="M570 '+(yy+19)+' L615 '+(yy+19)+'" stroke="'+color+'"/><g data-id="'+esc(item.id)+'" style="cursor:pointer"><rect x="618" y="'+yy+'" width="560" height="38" rx="7" fill="#162e42" stroke="'+color+'"/><text x="630" y="'+(yy+24)+'" font-size="13" fill="#e9f8ff">'+esc(item.name)+'</text></g>'});
+ return s+'</svg></div>';
+}
+function render(){
+ if(!D)return;areaList();var items=filtered();stats(items);$("results").innerHTML='<h2 style="margin:14px 0">'+esc(area)+' · '+items.length+' 個來源節點</h2><p class="muted">名稱節點不等於工商法人；簡報地名線索、公開所在地、實際製造工廠均為不同證據。此介面不載入合作狀態。</p>'+(mode==="graph"?svg(items):cards(items));
+ $("results").querySelectorAll("[data-id]").forEach(function(x){x.addEventListener("click",function(){detail(x.getAttribute("data-id"))});x.addEventListener("keydown",function(e){if(e.key==="Enter")detail(x.getAttribute("data-id"))})});
+}
+function fields(rows){return '<table class="table">'+rows.map(function(r){return '<tr><td>'+esc(r[0])+'</td><td>'+esc(r[1]||"待核")+'</td></tr>'}).join("")+'</table>'}
+function sourceList(urls){return urls.length?'<ul>'+urls.filter(function(x){return /^https?:\/\//.test(x)}).map(function(url){return '<li><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">開啟原始來源 ↗</a></li>'}).join("")+'</ul>':"<p>本筆尚無可靠外部來源網址。</p>"}
+function detail(id){
+ var r=(D.research_records||[]).find(function(a){return a.id===id});
+ var c=(D.companies||[]).find(function(a){return a["公司ID"]===id});
+ var output="";
+ if(r){
+ var d=r.details||{},sites=(D.research_sites||[]).filter(function(x){return x.supplier_id===r.id}),cross=(D.companies||[]).find(function(x){return x["公司ID"]===r.matched_v3});
+ output="<h2>"+esc(r.name)+"</h2><p>來源：原始簡報，第 "+esc(r.ppt_pages)+" 頁。證據分級 "+esc(r.grade)+"。</p>";
+ output+=fields([["PPT來源ID",r.id],["原簡報分類",r.category],["產品或設備",r.product],["名稱地區線索",r.name_region],["公開匹配法人/集團",r.matched_entity],["公開匹配地",r.matched_place],["V3對應ID及關係",r.matched_v3+" / "+r.match_type]]);
+ output+="<h3>產品能力</h3><div class=box>"+esc(d.product_detail||r.product||"待核")+"</div><h3>設備數量／速度／產能（歷史與現況分列）</h3><div class=box>"+esc(d.equipment||"未取得可靠來源")+"</div><h3>人物與公司關聯</h3><div class=box>"+esc(d.people||"待核")+"</div><h3>地址與廠區</h3><div class=box>"+esc(d.address||"待核")+"</div>";
+ if(cross)output+="<h3>V3 已存在節點</h3><div class=box>"+esc(cross["名稱"])+"（"+esc(r.match_type)+"，不自動合併法人）</div>";
+ if(sites.length)output+="<h3>跨區據點、規劃與歷史事件</h3>"+sites.map(function(x){return "<div class=box>"+esc(x.place+"／"+x.city_site+"｜"+x.role_time)+"</div>"}).join("");
+ output+="<h3>來源與待核</h3><div class=box>"+esc(d.caution||"資料未全部證實")+"</div>"+sourceList(r.public_source_urls||[]);
+ }else if(c){
+ var co=c["公司ID"];var cs=(D.sites||[]).filter(function(s){return s["所屬法人ID"]===co||s["所屬集團ID"]===c.group_root});var ppl=(D.careers||[]).filter(function(x){return x["公司ID"]===co});
+ output="<h2>"+esc(c["名稱"])+"</h2>"+fields([["公司ID",co],["類別",c["主分類"]],["公司/法人性質",c["實體種類"]],["正式名稱",c["正式名稱"]],["國家/省市",[c.country,c.province,c.city].filter(Boolean).join("／")],["產品/技術",c["產品與技術"]],["舊 V3 證據",c.geo_evidence],["集團/上層",c.group_name]]);
+ output+="<h3>已列據點（非所有均已核實工廠）</h3>"+cs.map(function(s){return '<div class=box>'+esc(s["廠區/據點名稱"])+"｜"+esc(s["標準據點類型"])+ "｜"+esc(s["省份"])+"</div>"}).join("");
+ output+="<h3>任職人物</h3>"+ppl.map(function(p){return '<div class=box>'+esc(p["人物姓名"])+"｜"+esc(p["職稱"]||p["角色類型"])+"</div>"}).join("");
+ }
+ $("detailContent").innerHTML=output;$("detail").classList.add("open");
+}
+$("close").addEventListener("click",function(){$("detail").classList.remove("open")});
+$("detail").addEventListener("click",function(e){if(e.target===$("detail"))$("detail").classList.remove("open")});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")$("detail").classList.remove("open")});
+$("query").addEventListener("input",function(e){q=e.target.value.trim().toLowerCase();render()});
+$("category").addEventListener("change",function(e){cat=e.target.value;render()});
+$("mode").addEventListener("change",function(e){mode=e.target.value;render()});
+if(location.protocol!=="file:"){
+ $("localFile").disabled=true;$("fileHint").textContent="為避免在公開網站處理內部資料，請下載本 HTML 後在本機開啟。";
+}else{
+ $("fileHint").textContent="只讀取你選取的 JSON；不會上傳到伺服器或本地儲存。";
+ $("localFile").addEventListener("change",async function(e){
+ try{
+ var f=e.target.files&&e.target.files[0];if(!f)return;
+ if(f.size>50*1024*1024)throw Error("檔案超過此檢視工具 50MB 限制");
+ var raw=await f.text();var x=JSON.parse(raw);
+ if(!Array.isArray(x.companies)||!Array.isArray(x.research_records)||!Array.isArray(x.sites))throw Error("資料結構不符：需要 V4 JSON 中的 companies、research_records、sites");
+ D=x;var areas=allAreas();area=areas.includes("中國/浙江省")?"中國/浙江省":areas[0]||"待定位/位置未核";
+ ["query","category","mode"].forEach(function(k){$(k).disabled=false});
+ $("notice").textContent="已在本機載入 "+f.name+"；沒有進行上傳。來源資料並非已核實工商名錄，請按原始來源分級使用。";
+ render();
+ }catch(ex){$("notice").textContent="資料載入失敗："+ex.message}
+ });
+}
+})();
+</script>
+</body>
+</html>
